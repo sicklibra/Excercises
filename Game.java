@@ -6,7 +6,8 @@ public class Game implements VG {
     int plyrs;
     String medium;
 
-    public void Game(String title, String system, int plyrs, String medium) {
+
+    public Game(String title, String system, int plyrs, String medium) {
         this.title = title;
         this.system = system;
         this.plyrs = plyrs;
