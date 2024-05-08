@@ -29,8 +29,8 @@ public class Game implements VG {
         return plyrs;
     }
 
-    public String csvTxt(){
+    public String toString(){
         String strplayers=String.valueOf(plyrs);
-        return title +","+system+","+ strplayers +"," + medium;
+        return title +","+system+","+ strplayers +"," + medium+"\n";
     }
 }

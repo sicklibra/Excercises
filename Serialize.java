@@ -14,22 +14,25 @@ public class Serialize {
     public static void save(ArrayList<Game> games) {
         Path filePath = Paths.get("gamelog.csv");
         int counter = 0;
+        //Creates a single string to write into file
+        String bigString="";
         try {//This trys to run the loop
             for (Game x : games) {
-                try {//Trys to write to csv file and counts number of successes
-                    //for final statement
-                    Files.write(filePath, x.csvTxt().getBytes(StandardCharsets.UTF_8));
+                bigString=bigString+x.toString();
                     counter++;
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
             }
         }
         //if loop run fails
         catch (Exception e) {
             System.out.println("Something went wrong... Good luck");
         } finally {
-            System.out.println("You have successfully written" + counter + "games into the system.");
+            try{
+                Files.writeString(filePath, bigString);
+            }
+            catch(IOException e){
+                e.printStackTrace();
+            }
+            System.out.println("You have successfully written " + counter + " games into the system.");
         }
     }
 
@@ -59,7 +62,7 @@ public class Serialize {
             numPlayers=-1;
         }
         System.out.println("What format is the game?(Disk, Cartridge, Digital)");
-        format=scnr.nextLine();
+        format=scnr.next();
         if (format.isEmpty()){
             format="Unknown";
         }
@@ -72,7 +75,7 @@ public class Serialize {
         Scanner scnr = new Scanner(System.in);
         String cont = "y";
         ArrayList<Game> games = new ArrayList<Game>();
-        games=deserialize(games);
+        //games=deserialize(games);
 
         while (cont.equalsIgnoreCase("y")) {
             System.out.println("Would you like to enter a new game to the Database? y/n");
