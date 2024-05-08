@@ -29,8 +29,9 @@ public class Game implements VG {
         return plyrs;
     }
 
-    public String toString(){
+    public String csvStr(){
         String strplayers=String.valueOf(plyrs);
+        //Returns a string of separated values, the line break is to separate each game in the csv
         return title +","+system+","+ strplayers +"," + medium+"\n";
     }
 }
